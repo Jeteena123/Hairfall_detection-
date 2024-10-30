@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url("{{ url_for('static', filename='bg.webp') }}") no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 100px; /* Margin from the top */
+        }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .alert {
+            font-size: 1.2rem;
+            border-radius: 10px;
+        }
+        .btn-primary, .btn-secondary {
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker shade for hover */
+        }
+        .btn-secondary:hover {
+            background-color: #0056b3; /* Darker shade for hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Prediction Result</h2>
+        <div class="alert alert-info text-center">
+            {% if prediction == 1 %}
+                <strong>Prediction: Hair Loss</strong>
+            {% else %}
+                <strong>Prediction: No Hair Loss</strong>
+            {% endif %}
+        </div>
+        <h3 class="text-center mt-4">{{ prediction }}</h3>
+        <a href="{{ url_for('index') }}" class="btn btn-primary mt-4">Make Another Prediction</a>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary mt-4">Back to Home</a>
+    </div>
+</body>
+</html>
+
+
